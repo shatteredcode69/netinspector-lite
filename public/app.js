@@ -55,6 +55,7 @@ async function loadStatus() {
   } catch {
     setText('gateway', 'Local agent required'); setText('gatewayMini', 'LOCAL ONLY'); setText('agentState', 'OFFLINE');
     $('auditButton').disabled = true;
+    $('agentLink').hidden = false;
     $('auditSummary').textContent = 'Open the local Node agent to scan your private gateway.';
     $('auditBadge').textContent = 'LOCAL ONLY';
     addEvent('Hosted mode detected. Private gateway probes are unavailable here.', 'warn');
