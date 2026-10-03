@@ -52,7 +52,13 @@ async function loadStatus() {
     setText('interface', first?.name);
     addEvent(`Route confirmed through ${data.gateway || 'an unknown gateway'}.`, 'good');
     setText('lastUpdated', `UPDATED ${new Date().toLocaleTimeString()}`);
-  } catch { setText('gateway', 'Agent unavailable'); setText('agentState', 'OFFLINE'); addEvent('Local agent could not be reached.', 'bad'); }
+  } catch {
+    setText('gateway', 'Local agent required'); setText('gatewayMini', 'LOCAL ONLY'); setText('agentState', 'OFFLINE');
+    $('auditButton').disabled = true;
+    $('auditSummary').textContent = 'Open the local Node agent to scan your private gateway.';
+    $('auditBadge').textContent = 'LOCAL ONLY';
+    addEvent('Hosted mode detected. Private gateway probes are unavailable here.', 'warn');
+  }
 }
 
 async function loadIsp() {
@@ -89,7 +95,8 @@ async function runAudit() {
     addEvent(`Exposure map complete: posture is ${posture.toLowerCase()}.`, open ? 'warn' : 'good');
   } catch (error) {
     $('auditBadge').textContent = 'ERROR';
-    $('auditSummary').textContent = error.message;
+    $('auditSummary').textContent = 'Local agent unavailable. Start Node and open localhost:4173.';
+    addEvent(error.message || 'Gateway audit could not start.', 'bad');
   } finally { button.disabled = false; button.firstChild.textContent = 'Run audit '; }
 }
 
