@@ -9,18 +9,27 @@
 <body>
   <main class="shell">
     <header class="topbar">
-      <div><p class="eyebrow">LOCAL NETWORK INSTRUMENT</p><h1>NetInspector <span>Lite</span></h1></div>
-      <div class="live"><i></i> LOCAL AGENT</div>
+      <a class="brand" href="/"><span class="brand-mark"><b></b><b></b><b></b><b></b></span><span>NETINSPECTOR <em>LITE</em></span></a>
+      <div class="top-meta"><span class="session">SESSION <strong id="sessionId">----</strong></span><span class="live"><i></i> LOCAL AGENT</span></div>
     </header>
 
-    <section class="intro"><p class="eyebrow">CONNECTION SNAPSHOT</p><h2>See what your network is actually doing.</h2><p class="lede">A small local dashboard for signal context, public identity, and gateway exposure.</p></section>
+    <section class="intro">
+      <div class="hero-copy"><p class="eyebrow">NETWORK SENSE / 01</p><h2>Know your network<br><i>before it surprises you.</i></h2><p class="lede">A local-first instrument for understanding the route between your machine and the wider internet.</p></div>
+      <div class="radar" aria-label="Local network activity visual"><div class="radar-grid"></div><div class="radar-sweep"></div><div class="radar-node"></div><span class="radar-label label-a">ROUTE</span><span class="radar-label label-b">YOU</span><span class="radar-label label-c">WAN</span></div>
+    </section>
+
+    <section class="readout" aria-label="Live network readout">
+      <div><span class="readout-label">ROUTE</span><strong id="gatewayMini">--</strong></div><div><span class="readout-label">RESPONSE</span><strong id="latency">--</strong></div><div><span class="readout-label">PUBLIC ID</span><strong id="publicMini">--</strong></div><div><span class="readout-label">AGENT</span><strong id="agentState">BOOTING</strong></div>
+    </section>
 
     <section class="grid">
-      <article class="panel signal-panel"><div class="panel-heading"><p class="eyebrow">01 / HOST</p><span class="badge" id="platform">Detecting</span></div><h3 id="gateway">Finding gateway...</h3><p class="muted">Default route</p><div class="metric-row"><div><strong id="localIp">--</strong><span>Local address</span></div><div><strong id="interface">--</strong><span>Interface</span></div></div></article>
-      <article class="panel isp-panel"><div class="panel-heading"><p class="eyebrow">02 / IDENTITY</p><span class="badge">IPINFO</span></div><h3 id="publicIp">Loading...</h3><p class="muted" id="organization">Public address</p><div class="detail" id="location">Location unavailable</div><div class="detail" id="asn">ASN unavailable</div></article>
-      <article class="panel audit-panel"><div class="panel-heading"><p class="eyebrow">03 / EXPOSURE</p><span class="badge" id="auditBadge">READY</span></div><div class="audit-title"><h3>Gateway audit</h3><button id="auditButton">Run audit <span>↗</span></button></div><p class="muted" id="auditSummary">Probe common service ports from this machine.</p><div class="ports" id="ports"><div class="empty">No audit run yet.</div></div></article>
+      <article class="panel host-panel"><div class="panel-heading"><p class="eyebrow">01 / HOST CONTEXT</p><span class="badge" id="platform">DETECTING</span></div><h3 id="gateway">Finding gateway...</h3><p class="muted">Default route / next hop</p><div class="metric-row"><div><strong id="localIp">--</strong><span>Local address</span></div><div><strong id="interface">--</strong><span>Interface</span></div></div><div class="microcopy">Your first hop is the most honest place to start.</div></article>
+      <article class="panel identity-panel"><div class="panel-heading"><p class="eyebrow">02 / PUBLIC IDENTITY</p><span class="badge">IPINFO</span></div><h3 id="publicIp">Loading...</h3><p class="muted" id="organization">Public address</p><div class="detail" id="location">Location unavailable</div><div class="detail" id="asn">ASN unavailable</div></article>
+      <article class="panel pulse-panel"><div class="panel-heading"><p class="eyebrow">03 / ROUTE PULSE</p><span class="badge badge-accent">LIVE</span></div><div class="pulse-head"><h3 id="pulseValue">--</h3><span>ms to agent</span></div><canvas id="pulseChart" width="620" height="150"></canvas><div class="chart-foot"><span>RESPONSE HISTORY</span><span id="pulseState">Collecting first sample</span></div></article>
+      <article class="panel audit-panel"><div class="panel-heading"><p class="eyebrow">04 / EXPOSURE MAP</p><span class="badge" id="auditBadge">READY</span></div><div class="audit-title"><div><h3>Gateway audit</h3><p class="muted" id="auditSummary">Probe common service ports from this machine.</p></div><div class="score" id="score"><span>POSTURE</span><strong>--</strong></div><button id="auditButton">Run audit <span>↗</span></button></div><div class="ports" id="ports"><div class="empty">No audit run yet. Start a scan to map the edge.</div></div><div class="legend"><span><i class="dot dot-open"></i>OPEN</span><span><i class="dot dot-filtered"></i>FILTERED</span><span><i class="dot dot-closed"></i>CLOSED</span></div></article>
     </section>
-    <footer><span>Runs locally. No account. No telemetry.</span><span>Node standard library + browser APIs</span></footer>
+    <section class="activity"><div class="activity-head"><p class="eyebrow">ACTIVITY LOG</p><span id="lastUpdated">WAITING FOR SIGNAL</span></div><div id="events"><div class="event"><i class="event-dot"></i><span>Agent ready. Waiting for the first network readout.</span><time>now</time></div></div></section>
+    <footer><span>Runs locally. No account. No telemetry.</span><span>NODE STANDARD LIBRARY / BROWSER CANVAS</span></footer>
   </main>
   <script src="/app.js"></script>
 </body>
