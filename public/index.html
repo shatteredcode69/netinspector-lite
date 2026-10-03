@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NetInspector Lite</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div><p class="eyebrow">LOCAL NETWORK INSTRUMENT</p><h1>NetInspector <span>Lite</span></h1></div>
+      <div class="live"><i></i> LOCAL AGENT</div>
+    </header>
+
+    <section class="intro"><p class="eyebrow">CONNECTION SNAPSHOT</p><h2>See what your network is actually doing.</h2><p class="lede">A small local dashboard for signal context, public identity, and gateway exposure.</p></section>
+
+    <section class="grid">
+      <article class="panel signal-panel"><div class="panel-heading"><p class="eyebrow">01 / HOST</p><span class="badge" id="platform">Detecting</span></div><h3 id="gateway">Finding gateway...</h3><p class="muted">Default route</p><div class="metric-row"><div><strong id="localIp">--</strong><span>Local address</span></div><div><strong id="interface">--</strong><span>Interface</span></div></div></article>
+      <article class="panel isp-panel"><div class="panel-heading"><p class="eyebrow">02 / IDENTITY</p><span class="badge">IPINFO</span></div><h3 id="publicIp">Loading...</h3><p class="muted" id="organization">Public address</p><div class="detail" id="location">Location unavailable</div><div class="detail" id="asn">ASN unavailable</div></article>
+      <article class="panel audit-panel"><div class="panel-heading"><p class="eyebrow">03 / EXPOSURE</p><span class="badge" id="auditBadge">READY</span></div><div class="audit-title"><h3>Gateway audit</h3><button id="auditButton">Run audit <span>↗</span></button></div><p class="muted" id="auditSummary">Probe common service ports from this machine.</p><div class="ports" id="ports"><div class="empty">No audit run yet.</div></div></article>
+    </section>
+    <footer><span>Runs locally. No account. No telemetry.</span><span>Node standard library + browser APIs</span></footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

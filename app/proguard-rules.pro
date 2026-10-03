@@ -1,0 +1,1 @@
+# NetInspector keeps release shrinking disabled until a production baseline is established.
